@@ -1,0 +1,16 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/Magicianred.LearnByDoing.MyBlog/v16/.suo
+/Magicianred.LearnByDoing.MyBlog.BL/bin/Debug/netcoreapp3.1
+/Magicianred.LearnByDoing.MyBlog.BL/obj
+/Magicianred.LearnByDoing.MyBlog.DAL/bin/Debug/netcoreapp3.1
+/Magicianred.LearnByDoing.MyBlog.DAL/obj
+/Magicianred.LearnByDoing.MyBlog.Domain/bin/Debug/netcoreapp3.1
+/Magicianred.LearnByDoing.MyBlog.Domain/obj
+/Magicianred.LearnByDoing.MyBlog.Service/obj
+/Magicianred.LearnByDoing.MyBlog.Web/bin/Debug/netcoreapp3.1
+/Magicianred.LearnByDoing.MyBlog.Web/obj
+/Magicianred.LearnByDoing.MyBlog.Web/appsettings.Development.json
+/.vs/Magicianred.LearnByDoing.MyBlog/config

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Magicianred.LearnByDoing.MyBlog.Web", "Magicianred.LearnByDoing.MyBlog.Web\Magicianred.LearnByDoing.MyBlog.Web.csproj", "{D4521C55-AA52-4EF3-83D9-7CFB24834AAC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Magicianred.LearnByDoing.MyBlog.BL", "Magicianred.LearnByDoing.MyBlog.BL\Magicianred.LearnByDoing.MyBlog.BL.csproj", "{80C0BA8C-D780-4C9A-9627-1C831EFE0BD7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Magicianred.LearnByDoing.MyBlog.DAL", "Magicianred.LearnByDoing.MyBlog.DAL\Magicianred.LearnByDoing.MyBlog.DAL.csproj", "{49D557AD-1201-4010-AAF7-AD458C38551A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DbScripts", "DbScripts", "{62CE6FDF-98F9-4E06-ACEE-A51220C54447}"
+	ProjectSection(SolutionItems) = preProject
+		DBScripts\000_InitialScript.sql = DBScripts\000_InitialScript.sql
+		DBScripts\000b_CreateUniqueCostraintForMigrationName.sql = DBScripts\000b_CreateUniqueCostraintForMigrationName.sql
+		DBScripts\001_create_posts_table.sql = DBScripts\001_create_posts_table.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{774F3F1E-D9DA-4DB0-A604-A26388DDC599}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.md = Readme.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Magicianred.LearnByDoing.MyBlog.Domain", "Magicianred.LearnByDoing.MyBlog.Domain\Magicianred.LearnByDoing.MyBlog.Domain.csproj", "{CDFC7D50-3BFE-4409-863B-5248B350B49C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D4521C55-AA52-4EF3-83D9-7CFB24834AAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4521C55-AA52-4EF3-83D9-7CFB24834AAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4521C55-AA52-4EF3-83D9-7CFB24834AAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4521C55-AA52-4EF3-83D9-7CFB24834AAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80C0BA8C-D780-4C9A-9627-1C831EFE0BD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80C0BA8C-D780-4C9A-9627-1C831EFE0BD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80C0BA8C-D780-4C9A-9627-1C831EFE0BD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80C0BA8C-D780-4C9A-9627-1C831EFE0BD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49D557AD-1201-4010-AAF7-AD458C38551A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49D557AD-1201-4010-AAF7-AD458C38551A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49D557AD-1201-4010-AAF7-AD458C38551A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49D557AD-1201-4010-AAF7-AD458C38551A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDFC7D50-3BFE-4409-863B-5248B350B49C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDFC7D50-3BFE-4409-863B-5248B350B49C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDFC7D50-3BFE-4409-863B-5248B350B49C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDFC7D50-3BFE-4409-863B-5248B350B49C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E69AC8C2-3D50-46D4-B1A3-AFB3FBEFBF44}
+	EndGlobalSection
+EndGlobal
