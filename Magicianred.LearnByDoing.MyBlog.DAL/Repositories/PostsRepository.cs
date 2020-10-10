@@ -6,6 +6,7 @@ using Dapper;
 using System.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Magicianred.LearnByDoing.MyBlog.Domain.Interfaces.Repositories;
+using System.Data;
 
 namespace Magicianred.LearnByDoing.MyBlog.DAL.Repositories
 {
@@ -14,15 +15,15 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Repositories
     /// </summary>
     public class PostsRepository : IPostsRepository
     {
-        private string _connectionString;
+        private readonly IDatabaseConnectionFactory _connectionFactory;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="configuration"></param>
-        public PostsRepository(IConfiguration configuration)
+        public PostsRepository(IDatabaseConnectionFactory connectionFactory)
         {
-            _connectionString = configuration.GetConnectionString("MyBlog");
+            this._connectionFactory = connectionFactory;
         }
 
         /// <summary>
@@ -32,7 +33,7 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Repositories
         public IEnumerable<Post> GetAll()
         {
             IEnumerable<Post> posts = null;
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (var connection = _connectionFactory.GetConnection())
             {
                 posts = connection.Query<Post>("SELECT * FROM Posts ORDER BY CreateDate DESC");
             }
@@ -47,7 +48,7 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Repositories
         public Post GetById(int id)
         {
             Post post = null;
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (var connection = _connectionFactory.GetConnection())
             {
                 post = connection.QueryFirstOrDefault<Post>("SELECT TOP 1 * FROM Posts WHERE Id = @PostId", new { PostId = id });
             }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Magicianred.LearnByDoing.MyBlog.Domain.Models
 {
-    public class Post : IPost
+    public partial class Post : IPost
     {
         public int Id { get; set; }
         public string Title { get; set; }

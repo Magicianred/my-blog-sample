@@ -1,12 +1,6 @@
-﻿using Castle.Core.Logging;
-using Magicianred.LearnByDoing.MyBlog.Domain.Interfaces.Services;
-using Magicianred.LearnByDoing.MyBlog.WebApi.Controllers;
-using Magicianred.LearnByDoing.MyBlog.WebApi.Integration.Helpers;
+﻿using Magicianred.LearnByDoing.MyBlog.WebApi.Integration.Helpers;
 using Microsoft.AspNetCore.TestHost;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using NUnit.Framework;
 using System.Net;
 using System.Net.Http;
@@ -19,8 +13,8 @@ namespace Magicianred.LearnByDoing.MyBlog.WebApi.Integration.Controllers
     {
         private IHost _factory;
         private HttpClient _client;
-        private IServiceScope _scope;
-        private IConfiguration _configuration;
+        //private IServiceScope _scope;
+        //private IConfiguration _configuration;
 
         #region SetUp and TearDown
         [OneTimeSetUp]
