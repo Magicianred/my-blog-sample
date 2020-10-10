@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "home",
+      "launchUrl": "api/home",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +20,7 @@
     "Magicianred.LearnByDoing.MyBlog.WebApi": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "home",
+      "launchUrl": "api/home",
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
