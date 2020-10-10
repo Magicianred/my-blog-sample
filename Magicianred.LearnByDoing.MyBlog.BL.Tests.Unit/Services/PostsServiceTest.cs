@@ -45,6 +45,7 @@ namespace Magicianred.LearnByDoing.MyBlog.BL.Tests.Unit.Services
         #endregion
 
         [Test]
+        [Category("Unit test")]
         public void should_retrieve_all_posts()
         {
             // Arrange
@@ -66,6 +67,7 @@ namespace Magicianred.LearnByDoing.MyBlog.BL.Tests.Unit.Services
 
         [TestCase(1)]
         [TestCase(2)]
+        [Category("Unit test")]
         public void should_retrieve_one_post_by_id(int id)
         {
             // Arrange
@@ -83,6 +85,7 @@ namespace Magicianred.LearnByDoing.MyBlog.BL.Tests.Unit.Services
         }
 
         [Test]
+        [Category("Unit test")]
         public void should_retrieve_no_one_post()
         {
             // Arrange
