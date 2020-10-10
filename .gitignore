@@ -18,3 +18,12 @@
 /Magicianred.LearnByDoing.MyBlog.WebApi/bin/Debug/netcoreapp3.1
 /Magicianred.LearnByDoing.MyBlog.WebApi/obj
 /Magicianred.LearnByDoing.MyBlog.WebApi/appsettings.Development.json
+/.vs/Magicianred.LearnByDoing.MyBlog/v16/TestStore/0
+/Magicianred.LearnByDoing.MyBlog.BL.Tests.Unit/bin/Debug/netcoreapp3.1
+/Magicianred.LearnByDoing.MyBlog.BL.Tests.Unit/obj
+/Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit/bin/Debug/netcoreapp3.1
+/Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit/obj
+/Magicianred.LearnByDoing.MyBlog.Web.Tests.Integration/bin/Debug/netcoreapp3.1
+/Magicianred.LearnByDoing.MyBlog.Web.Tests.Integration/obj
+/Magicianred.LearnByDoing.MyBlog.WebApi.Integration/bin/Debug/netcoreapp3.1
+/Magicianred.LearnByDoing.MyBlog.WebApi.Integration/obj
