@@ -50,7 +50,8 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Repositories
             Post post = null;
             using (var connection = _connectionFactory.GetConnection())
             {
-                post = connection.QueryFirstOrDefault<Post>("SELECT TOP 1 * FROM Posts WHERE Id = @PostId", new { PostId = id });
+                // TOP 1 is not a command for SQLite, remove
+                post = connection.QueryFirstOrDefault<Post>("SELECT * FROM Posts WHERE Id = @PostId", new { PostId = id });
             }
             return post;
         }

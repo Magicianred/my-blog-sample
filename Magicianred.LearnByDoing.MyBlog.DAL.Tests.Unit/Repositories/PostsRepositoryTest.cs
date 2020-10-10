@@ -69,5 +69,48 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit.Repositories
                 Assert.IsTrue(mockPost.Text == post.Text);
             }
         }
+
+        [TestCase(1)]
+        [TestCase(1)]
+        [Category("Unit test")]
+        public void should_retrieve_post_by_id(int id)
+        {
+            // Arrange
+            var mockPosts = PostsHelper.GetDefaultMockData();
+            var db = new InMemoryDatabase();
+            db.Insert<Post>(mockPosts);
+            _connectionFactory.GetConnection().Returns(db.OpenConnection());
+
+            var mockPost = mockPosts.Where(x => x.Id == id).FirstOrDefault();
+
+            // Act
+            var post = _sut.GetById(id);
+
+            // Assert
+            Assert.IsNotNull(post);
+
+            Assert.IsTrue(mockPost.Id == post.Id);
+            Assert.IsTrue(mockPost.Title == post.Title);
+            Assert.IsTrue(mockPost.Text == post.Text);
+
+        }
+
+        [Test]
+        [Category("Unit test")]
+        public void should_retrieve_no_one_post()
+        {
+            // Arrange
+            var mockPosts = PostsHelper.GetDefaultMockData();
+            var db = new InMemoryDatabase();
+            db.Insert<Post>(mockPosts);
+            _connectionFactory.GetConnection().Returns(db.OpenConnection());
+
+            // Act
+            var post = _sut.GetById(1000);
+
+            // Assert
+            Assert.IsNull(post);
+
+        }
     }
 }
