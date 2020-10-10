@@ -1,0 +1,25 @@
+﻿@model Magicianred.LearnByDoing.MyBlog.Domain.Models.Post
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @if (@Model != null)
+    {
+        <article class="post-details post-id-@(Model.Id)">
+            <h2>@Model.Title</h2>
+            <p>@Model.Text</p>
+        </article>
+    }
+    else
+    {
+        <article>
+            <p>Post Not Found</p>
+        </article>
+    }
+    <p>
+        <a href="/">Return to Home</a>
+    </p>
+</div>

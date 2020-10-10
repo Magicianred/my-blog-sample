@@ -1,16 +1,16 @@
-﻿using Magicianred.LearnByDoing.MyBlog.BL.Services;
-using Magicianred.LearnByDoing.MyBlog.DAL.Repositories;
-using Magicianred.LearnByDoing.MyBlog.Domain.Interfaces.Models;
-using Magicianred.LearnByDoing.MyBlog.Domain.Interfaces.Repositories;
-using Magicianred.LearnByDoing.MyBlog.Domain.Interfaces.Services;
-using Magicianred.LearnByDoing.MyBlog.Domain.Models;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.TestHost;
+﻿using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Magicianred.LearnByDoing.MyBlog.Domain.Interfaces.Models;
+using Magicianred.LearnByDoing.MyBlog.Domain.Models;
+using Magicianred.LearnByDoing.MyBlog.Domain.Interfaces.Repositories;
+using Magicianred.LearnByDoing.MyBlog.DAL.Repositories;
+using Magicianred.LearnByDoing.MyBlog.Domain.Interfaces.Services;
+using Magicianred.LearnByDoing.MyBlog.BL.Services;
+using Microsoft.AspNetCore.Hosting;
 
-namespace Magicianred.LearnByDoing.MyBlog.WebApi.Integration.Helpers
+namespace Magicianred.LearnByDoing.MyBlog.Web.Tests.Integration.Helpers
 {
     public static class CreateHostBuilderTestHelper
     {

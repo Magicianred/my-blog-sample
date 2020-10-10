@@ -13,4 +13,16 @@
     <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Magicianred.LearnByDoing.MyBlog.BL\Magicianred.LearnByDoing.MyBlog.BL.csproj" />
+    <ProjectReference Include="..\Magicianred.LearnByDoing.MyBlog.DAL\Magicianred.LearnByDoing.MyBlog.DAL.csproj" />
+    <ProjectReference Include="..\Magicianred.LearnByDoing.MyBlog.Web\Magicianred.LearnByDoing.MyBlog.Web.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="testsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

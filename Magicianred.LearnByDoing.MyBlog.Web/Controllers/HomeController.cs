@@ -44,7 +44,7 @@ namespace Magicianred.LearnByDoing.MyBlog.Web.Controllers
 
         /// <summary>
         /// Retrieve the post with the id
-        /// GET <HomeController>/5
+        /// GET <HomeController>/Post/5
         /// </summary>
         /// <param name="id"></param>
         /// <returns>the post with requested id</returns>

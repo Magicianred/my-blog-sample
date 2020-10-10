@@ -29,3 +29,6 @@
 /Magicianred.LearnByDoing.MyBlog.WebApi.Integration/obj
 /Magicianred.LearnByDoing.MyBlog.WebApi.Integration/testsettings.Development.json
 /Magicianred.LearnByDoing.MyBlog.WebApi.Integration/testsettings.json
+/Magicianred.LearnByDoing.MyBlog.Web/Magicianred.LearnByDoing.MyBlog.Web.csproj.user
+/Magicianred.LearnByDoing.MyBlog.Web.Tests.Integration/Magicianred.LearnByDoing.MyBlog.Web.Tests.Integration.csproj.user
+/Magicianred.LearnByDoing.MyBlog.WebApi.Integration/Magicianred.LearnByDoing.MyBlog.WebApi.Integration.csproj.user

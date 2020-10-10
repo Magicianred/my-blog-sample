@@ -9,8 +9,8 @@
     <ul>
         @foreach(var post in Model)
         {
-            <li>
-                <h2>@post.Title</h2>
+            <li class="post-item post-id-@(post.Id)">
+                <h2><a href="/home/post/@post.Id">@post.Title</a></h2>
                 <p>@post.Text</p>
             </li>
         }
