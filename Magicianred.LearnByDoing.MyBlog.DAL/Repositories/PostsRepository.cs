@@ -49,7 +49,7 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Repositories
             Post post = null;
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                post = connection.QueryFirst<Post>("SELECT TOP 1 * FROM Posts WHERE Id = @PostId", new { PostId = id });
+                post = connection.QueryFirstOrDefault<Post>("SELECT TOP 1 * FROM Posts WHERE Id = @PostId", new { PostId = id });
             }
             return post;
         }
