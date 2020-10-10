@@ -15,3 +15,6 @@
 /Magicianred.LearnByDoing.MyBlog.Web/appsettings.Development.json
 /.vs/Magicianred.LearnByDoing.MyBlog/config
 .vs/Magicianred.LearnByDoing.MyBlog/DesignTimeBuild/.dtbcache.v2
+/Magicianred.LearnByDoing.MyBlog.WebApi/bin/Debug/netcoreapp3.1
+/Magicianred.LearnByDoing.MyBlog.WebApi/obj
+/Magicianred.LearnByDoing.MyBlog.WebApi/appsettings.Development.json

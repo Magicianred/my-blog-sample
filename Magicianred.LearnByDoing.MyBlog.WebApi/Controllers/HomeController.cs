@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Magicianred.LearnByDoing.MyBlog.Web.Models;
-using Magicianred.LearnByDoing.MyBlog.BL.Services;
 using Magicianred.LearnByDoing.MyBlog.Domain.Interfaces.Services;
 using Magicianred.LearnByDoing.MyBlog.Domain.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
-namespace Magicianred.LearnByDoing.MyBlog.Web.Controllers
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+namespace Magicianred.LearnByDoing.MyBlog.WebApi.Controllers
 {
     /// <summary>
     /// Handle Posts of blog
     /// </summary>
-    public class HomeController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class HomeController : ControllerBase
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IPostsService _postsService;
@@ -33,44 +34,27 @@ namespace Magicianred.LearnByDoing.MyBlog.Web.Controllers
 
         /// <summary>
         /// Retrieve all Posts
-        /// GET: <HomeController>
+        /// GET: api/<HomeController>
         /// </summary>
         /// <returns>list of Posts</returns>
-        public IActionResult Index()
+        [HttpGet]
+        public IEnumerable<Post> Get()
         {
             var posts = _postsService.GetAll();
-            return View(posts);
+            return posts;
         }
 
         /// <summary>
         /// Retrieve the post with the id
-        /// GET <HomeController>/5
+        /// GET api/<HomeController>/5
         /// </summary>
         /// <param name="id"></param>
         /// <returns>the post with requested id</returns>
-        public IActionResult Post(int id)
+        [HttpGet("{id}")]
+        public Post Get(int id)
         {
             var post = _postsService.GetById(id);
-            return View(post);
-        }
-
-        /// <summary>
-        /// Show privacy page
-        /// </summary>
-        /// <returns></returns>
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        /// <summary>
-        /// Show error in page
-        /// </summary>
-        /// <returns></returns>
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return post;
         }
     }
 }

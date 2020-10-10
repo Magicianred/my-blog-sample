@@ -3,20 +3,17 @@ A simple blog for [learn-by-doing](https://github.com/Magicianred/learn-by-doing
 
 ## Instructions
 ### 1. Database  
-1. Create a new Database in Sql Server  
-2. Run scripts:  
-	- 000_InitialScript.sql  
-	- 000b_CreateUniqueCostraintForMigrationName.sql  
-	- 001_create_posts_table.sql  
+Show the [README.md](https://github.com/Magicianred/my-blog-sample/blob/develop/DBScripts/README.md) in DBScript folder.   
 
-### 2. Set Connection string
-Set your connection string in file appsettings.json (or better in appsettings.Development.json) - replace *YOUR_CONNECTION_STRING* with your connection string  
+### 2. Set your Connection string in the projects  
+Set your connection string in files appsettings.json (or better in appsettings.Development.json) - replace *YOUR_CONNECTION_STRING* with your connection string  
 ```json
   "ConnectionStrings": {
     "myBlog": "YOUR_CONNECTION_STRING"
   }
 ```
 
-### 3. Run application
-Set *Magicianred.LearnByDoing.MyBlog.Web* project as Startup Project and lanch debug  
+### 3. Run applications
+- For the *Web Application* set *Magicianred.LearnByDoing.MyBlog.<span/>Web* project as Startup Project and lanch debug or see the [README.md](https://github.com/Magicianred/my-blog-sample/blob/develop/Magicianred.LearnByDoing.MyBlog.Web/README.md)  
+- For the *Web Api Application* set *Magicianred.LearnByDoing.MyBlog.WebApi* project as Startup Project and lanch debug or see the [README.md](https://github.com/Magicianred/my-blog-sample/blob/develop/Magicianred.LearnByDoing.MyBlog.WebApi/README.md)  
 

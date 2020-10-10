@@ -43,5 +43,6 @@ namespace Magicianred.LearnByDoing.MyBlog.BL.Services
         {
             return _postsRepository.GetById(id);
         }
+
     }
 }

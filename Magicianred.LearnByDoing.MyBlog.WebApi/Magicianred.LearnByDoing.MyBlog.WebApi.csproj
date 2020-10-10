@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Magicianred.LearnByDoing.MyBlog.BL\Magicianred.LearnByDoing.MyBlog.BL.csproj" />
+    <ProjectReference Include="..\Magicianred.LearnByDoing.MyBlog.DAL\Magicianred.LearnByDoing.MyBlog.DAL.csproj" />
+    <ProjectReference Include="..\Magicianred.LearnByDoing.MyBlog.Domain\Magicianred.LearnByDoing.MyBlog.Domain.csproj" />
+  </ItemGroup>
+
+
+</Project>
