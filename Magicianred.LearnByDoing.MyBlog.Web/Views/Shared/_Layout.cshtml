@@ -1,48 +1,57 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="">
+    <meta name="author" content="Magicianred">
+
     <title>@ViewData["Title"] - Magicianred.LearnByDoing.MyBlog.Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Magicianred.LearnByDoing.MyBlog.Web</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+    <div id="layout-jumbotron" class="layout container-fluid">
+        <header>
+            <nav role="navigation" class="navbar navbar-expand-md navbar-dark bg-dark">
+                <a href="" class="navbar-brand">
+                    <img src="~/images/logo.svg" width="40" height="40" />
+                    @ViewData["Title"]
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+                <div class="navbar-collapse collapse" id="navbarNav">
+                    <div class="mr-auto navbar-nav">
+                        <a href="@Url.Action("Index", "Home")" data-rb-event-key="" class="nav-link">Home</a>
+                        <a href="@Url.Action("About", "Home")" data-rb-event-key="about" class="nav-link">About Project</a>
+                        <a href="@Url.Action("Contact", "Home")" data-rb-event-key="contact" class="nav-link">Contact Us</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div role="main" class="page">
+            @RenderBody()
+        </div>
+
+        <footer id="footer" class="bg-dark">
+            <div class="container-fluid">
+                <p>
+                    This is the footer of <b><a href="https://github.com/Magicianred/my-blog-sample">Magicianred.LearnByDoing.MyBlog.Web</a></b>
+                </p>
+                <p>
+                    Realized by <a rel="noopener noreferrer" target="_blank" href="https://github.com/Magicianred">magicianred</a>
+                </p>
+                <div>
+                    Logo Icons made by <a href="https://www.iconfinder.com/samatodedara" title="Samat Odedara">Samat Odedara</a>
+                    from <a href="https://www.iconfinder.com/" title="Iconfinder">Iconfinder</a>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        </footer>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - Magicianred.LearnByDoing.MyBlog.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
-</html>

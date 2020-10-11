@@ -5,14 +5,14 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <ul>
+    <p>Learn more <a href="@Url.Action("About", "Home")">about this project</a>.</p>
+    <div class="post-list">
         @foreach(var post in Model)
         {
-            <li class="post-item post-id-@(post.Id)">
-                <h2><a href="/home/post/@post.Id">@post.Title</a></h2>
+            <div class="post-item post-id-@(post.Id)">
+                <h2><a href="@Url.Action("Post", "Home", new { Id = post.Id })">@post.Title</a></h2>
                 <p>@post.Text</p>
-            </li>
+            </div>
         }
-    </ul>
+    </div>
 </div>

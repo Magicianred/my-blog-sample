@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\images\logo.svg" />
+    <None Include="wwwroot\styles\App.scss" />
+    <None Include="wwwroot\styles\custom.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Magicianred.LearnByDoing.MyBlog.BL\Magicianred.LearnByDoing.MyBlog.BL.csproj" />
     <ProjectReference Include="..\Magicianred.LearnByDoing.MyBlog.Domain\Magicianred.LearnByDoing.MyBlog.Domain.csproj" />
   </ItemGroup>

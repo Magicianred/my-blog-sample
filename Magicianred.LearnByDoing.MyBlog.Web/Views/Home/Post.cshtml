@@ -4,8 +4,8 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Blog post</h1>
+    <p>Learn more <a href="@Url.Action("About", "Home")">about this project</a>.</p>
     @if (@Model != null)
     {
         <article class="post-details post-id-@(Model.Id)">
@@ -20,6 +20,6 @@
         </article>
     }
     <p>
-        <a href="/">Return to Home</a>
+        <a href="@Url.Action("Index", "Home")">Return to Home</a>
     </p>
 </div>

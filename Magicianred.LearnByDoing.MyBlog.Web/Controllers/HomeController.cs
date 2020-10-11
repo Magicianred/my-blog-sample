@@ -55,10 +55,19 @@ namespace Magicianred.LearnByDoing.MyBlog.Web.Controllers
         }
 
         /// <summary>
-        /// Show privacy page
+        /// Show about page
         /// </summary>
         /// <returns></returns>
-        public IActionResult Privacy()
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// Show contact page
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult Contact()
         {
             return View();
         }
