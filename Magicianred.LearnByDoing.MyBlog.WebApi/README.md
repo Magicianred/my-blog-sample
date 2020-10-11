@@ -6,8 +6,22 @@ A WebApi Application in *asp.net webapi* core 3.1
 
 ## Running Application
 
+## Set your Connection string in the projects  
+Set your dbtype and connection string in files appsettings.json (or better in appsettings.Development.json) - replace *DB_TYPE* and *YOUR_CONNECTION_STRING* with your connection string  
+Possible dbtype:  
+- "MsSQL" (default)  
+- "MySQL"  
+```json
+{
+  "DatabaseType": "DB_TYPE"
+  "ConnectionStrings": {
+    "myBlog": "YOUR_CONNECTION_STRING"
+  }
+}
+```
+
 ### From Visual Studio
-1. Setup your Database (in Folder DBScript you find the instruction) and set your connection string in appsettings.json (or appsettings.Development.json)  
+1. Setup your Database (in Folder DBScript you find the instruction)  
 2. Set Project as Start Project  
 3. Press *F5* to start DEBUG or you press debug button  
 

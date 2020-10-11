@@ -35,7 +35,7 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Repositories
             IEnumerable<Post> posts = null;
             using (var connection = _connectionFactory.GetConnection())
             {
-                posts = connection.Query<Post>("SELECT * FROM Posts ORDER BY CreateDate DESC");
+                posts = connection.Query<Post>("SELECT Id, Title, Text FROM Posts ORDER BY CreateDate DESC");
             }
             return posts;
         }

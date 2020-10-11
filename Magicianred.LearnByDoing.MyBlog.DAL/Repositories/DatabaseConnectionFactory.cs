@@ -1,10 +1,8 @@
 ﻿using Magicianred.LearnByDoing.MyBlog.Domain.Interfaces.Repositories;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
+using MySql.Data.MySqlClient;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text;
 
 namespace Magicianred.LearnByDoing.MyBlog.DAL.Repositories
 {
@@ -19,6 +17,11 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Repositories
 
         public IDbConnection GetConnection()
         {
+            var databaseType = _configuration.GetSection("DatabaseType").Value;
+            if (!string.IsNullOrWhiteSpace(databaseType) && databaseType.ToLower().Trim() == "mysql")
+            {
+                return new MySqlConnection(_configuration.GetConnectionString("MyBlog"));
+            }
             return new SqlConnection(_configuration.GetConnectionString("MyBlog"));
         }
     }
