@@ -78,4 +78,4 @@ This is the project with Integration Tests for the Web project.
 #### Magicianred.LearnByDoing.MyBlog.WebApi.Tests.Integration  
 This is the project with Integration Tests for the WebApi project.  
 
-[for details read README.md](https://github.com/Magicianred/my-blog-sample/blob/develop/Magicianred.LearnByDoing.MyBlog.WebApi.Tests.Integration/README.md)  
+[for details read README.md](https://github.com/Magicianred/my-blog-sample/blob/develop/Magicianred.LearnByDoing.MyBlog.WebApi.Integration/README.md)  
