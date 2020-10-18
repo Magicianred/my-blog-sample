@@ -1,4 +1,4 @@
-﻿using Magicianred.LearnByDoing.MyBlog.WebApi.Integration.Helpers;
+﻿using Magicianred.LearnByDoing.MyBlog.WebApi.Tests.Integration.Helpers;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Hosting;
 using NUnit.Framework;
@@ -6,7 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Magicianred.LearnByDoing.MyBlog.WebApi.Integration.Controllers
+namespace Magicianred.LearnByDoing.MyBlog.WebApi.Tests.Integration.Controllers
 {
     [TestFixture]
     public class HomeControllerTest

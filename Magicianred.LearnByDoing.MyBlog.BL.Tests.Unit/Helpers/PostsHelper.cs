@@ -1,9 +1,7 @@
 ﻿using Magicianred.LearnByDoing.MyBlog.Domain.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Magicianred.LearnByDoing.MyBlog.BL.Helpers
+namespace Magicianred.LearnByDoing.MyBlog.BL.Tests.Unit.Helpers
 {
     public static class PostsHelper
     {

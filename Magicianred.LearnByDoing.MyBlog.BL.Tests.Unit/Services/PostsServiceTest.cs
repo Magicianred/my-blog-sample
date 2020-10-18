@@ -1,14 +1,10 @@
-﻿using Magicianred.LearnByDoing.MyBlog.BL.Helpers;
-using Magicianred.LearnByDoing.MyBlog.BL.Services;
+﻿using Magicianred.LearnByDoing.MyBlog.BL.Services;
+using Magicianred.LearnByDoing.MyBlog.BL.Tests.Unit.Helpers;
 using Magicianred.LearnByDoing.MyBlog.Domain.Interfaces.Repositories;
-using Magicianred.LearnByDoing.MyBlog.Domain.Interfaces.Services;
 using Magicianred.LearnByDoing.MyBlog.Domain.Models;
 using NSubstitute;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Magicianred.LearnByDoing.MyBlog.BL.Tests.Unit.Services
 {

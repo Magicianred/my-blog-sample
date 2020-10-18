@@ -1,5 +1,5 @@
-# Magicianred.LearnByDoing.MyBlog.WebApi.Tests.Integration  
-This is the project with Integration Tests for the WebApi project.  
+# Magicianred.LearnByDoing.MyBlog.Web.Tests.Integration  
+This is the project with Integration Tests for the Web project.  
 
 ## How to use  
 
@@ -20,5 +20,4 @@ Open the terminal and digit
 ```cmd
 dotnet test
 ```
-
 

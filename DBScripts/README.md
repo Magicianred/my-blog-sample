@@ -1,9 +1,9 @@
 # DBScript  
 
 ## Description  
-In this folder we contains the sql script to create the database and table that we use in the application.  
+This folder contains the sql scripts to create the database and table that we use in the application.  
 
-For the sql server I use the script in the repository [*sqlserver-db-script-migration-system*](https://github.com/Magicianred/sqlserver-db-script-migration-system)  
+For the sql server I use the system in this repository [*sqlserver-db-script-migration-system*](https://github.com/Magicianred/sqlserver-db-script-migration-system)  
 
 ## Instruction  
 

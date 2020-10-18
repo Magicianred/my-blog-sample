@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Magicianred.LearnByDoing.MyBlog.WebApi.Integration.Helpers
+namespace Magicianred.LearnByDoing.MyBlog.WebApi.Tests.Integration.Helpers
 {
     public static class CreateHostBuilderTestHelper
     {

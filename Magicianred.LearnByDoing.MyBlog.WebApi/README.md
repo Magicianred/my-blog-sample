@@ -1,5 +1,6 @@
-# WebApi Application  
-Namespace *Magicianred.LearnByDoing.MyBlog.WebApi*  
+# Magicianred.LearnByDoing.MyBlog.WebApi  
+This is the *web api* application. It is concerned with retrieve json data.  
+Usually a *web api* project is consumed not by human but by other applications, specially client applications like *react*, *angular* or other javascript frameworks/libraries, but also client applications like *WPF* or other *MVC* and *web api*.  
 
 ## Description  
 A WebApi Application in *asp.net webapi* core 3.1  
@@ -39,3 +40,17 @@ When you have Running the application, you can open your browser and go to addre
 - *https://localhost:5001/api/home/{id}* - to show the post with {id}  
 
 Enjoy your code!  
+
+
+## Technical description  
+
+### Controllers  
+Controllers are the main component of the web api, it transforms data retrieves from *services* or *repositories* into *json* or *xml*.  
+Controllers are composed by *actions* or *endpoints*.  
+Actions are called in *rest* way, it means they are a *uri* and a *http verbs* (GET, POST, PUT, DELETE, etc.)  
+- *HomeController* the main (and now unique) controller with these actions:  
+  - *Get* [GET /api/home or /api/home/index] retrieve all posts     
+  - *Get({id})* [GET /api/home/{id}] retrieve data of the post by *id*  
+
+
+
