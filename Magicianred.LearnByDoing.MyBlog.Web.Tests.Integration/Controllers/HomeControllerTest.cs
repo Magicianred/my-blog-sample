@@ -92,5 +92,57 @@ namespace Magicianred.LearnByDoing.MyBlog.Web.Tests.Integration.Controllers
             Assert.That(!string.IsNullOrWhiteSpace(responseString));
             Assert.That(responseString.Contains("<p>Post Not Found</p>"));
         }
+
+        [Test]
+        [Category("Integration Test")]
+        public async Task should_retrieve_all_categories()
+        {
+            // Arrange
+            var endpoint = "/home/categories";
+
+            // Act
+            var response = await _client.GetAsync(endpoint);
+            var responseString = await response.Content.ReadAsStringAsync();
+
+            // Assert
+            Assert.That(response.IsSuccessStatusCode);
+            Assert.That(!string.IsNullOrWhiteSpace(responseString));
+            Assert.That(responseString.Contains("<div class=\"category-item category-id-"));
+        }
+
+        [TestCase(1)]
+        [TestCase(2)]
+        [Category("Integration Test")]
+        public async Task should_retrieve_category_by_id(int id)
+        {
+            // Arrange
+            var endpoint = string.Format("/home/category/{0}", id.ToString());
+
+            // Act
+            var response = await _client.GetAsync(endpoint);
+            var responseString = await response.Content.ReadAsStringAsync();
+
+            // Assert
+            Assert.That(response.IsSuccessStatusCode);
+            Assert.That(!string.IsNullOrWhiteSpace(responseString));
+            Assert.That(responseString.Contains(String.Format("<section class=\"category-details-{0}\"", id.ToString())));
+        }
+
+        [Test]
+        [Category("Integration Test")]
+        public async Task should_retrieve_no_one_category()
+        {
+            // Arrange
+            var endpoint = "/home/category/1000";
+
+            // Act
+            var response = await _client.GetAsync(endpoint);
+            var responseString = await response.Content.ReadAsStringAsync();
+
+            // Assert
+            Assert.That(response.StatusCode == HttpStatusCode.OK);
+            Assert.That(!string.IsNullOrWhiteSpace(responseString));
+            Assert.That(responseString.Contains("<p>Category Not Found</p>"));
+        }
     }
 }
