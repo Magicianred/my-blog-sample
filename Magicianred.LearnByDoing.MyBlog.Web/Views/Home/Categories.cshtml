@@ -1,0 +1,18 @@
+﻿@model List<Magicianred.LearnByDoing.MyBlog.Domain.Models.Category>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn more <a href="@Url.Action("About", "Home")">about this project</a>.</p>
+    <div class="category-list">
+        @foreach (var category in Model)
+        {
+            <div class="category-item category-id-@(category.Id)">
+                <h2><a href="@Url.Action("Category", "Home", new { Id = category.Id })">@category.Name</a></h2>
+                <p>@category.Description</p>
+            </div>
+        }
+    </div>
+</div>

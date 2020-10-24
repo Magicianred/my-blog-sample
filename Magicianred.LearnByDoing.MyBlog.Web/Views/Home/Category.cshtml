@@ -1,0 +1,34 @@
+﻿@model Magicianred.LearnByDoing.MyBlog.Domain.Models.Category
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn more <a href="@Url.Action("About", "Home")">about this project</a>.</p>
+    @if (@Model != null)
+    {
+        <section class="category-details-@(Model.Id)">
+            <h2>@Model.Name</h2>
+            <p>@Model.Description</p>
+            <category class="post-list">
+                @foreach (var post in Model.Posts)
+                {
+                    <div class="post-item post-id-@(post.Id)">
+                        <h2><a href="@Url.Action("Post", "Home", new { Id = post.Id })">@post.Title</a></h2>
+                        <p>@post.Text</p>
+                    </div>
+                }
+            </category>
+        </section>
+    } 
+    else
+    {
+        <article>
+            <p>Category Not Found</p>
+        </article>
+    }
+    <p>
+        <a href="@Url.Action("Index", "Home")">Return to Home</a>
+    </p>
+</div>

@@ -19,15 +19,18 @@ namespace Magicianred.LearnByDoing.MyBlog.Web.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IPostsService _postsService;
+        private readonly ICategoriesService _categoriesService;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="postsService"></param>
+        /// <param name="categoriesService"></param>
         /// <param name="logger"></param>
-        public HomeController(IPostsService postsService, ILogger<HomeController> logger)
+        public HomeController(IPostsService postsService, ICategoriesService categoriesService, ILogger<HomeController> logger)
         {
             _postsService = postsService;
+            _categoriesService = categoriesService;
             _logger = logger;
         }
 
@@ -52,6 +55,29 @@ namespace Magicianred.LearnByDoing.MyBlog.Web.Controllers
         {
             var post = _postsService.GetById(id);
             return View(post);
+        }
+
+        /// <summary>
+        /// Retrieve all Categories
+        /// GET: <HomeController>\Categories
+        /// </summary>
+        /// <returns>list of Categories</returns>
+        public IActionResult Categories()
+        {
+            var categories = _categoriesService.GetAll();
+            return View(categories);
+        }
+
+        /// <summary>
+        /// Retrieve the category with the id
+        /// GET <HomeController>/Category/5
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>the category with requested id</returns>
+        public IActionResult Category(int id)
+        {
+            var category = _categoriesService.GetById(id);
+            return View(category);
         }
 
         /// <summary>
