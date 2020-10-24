@@ -38,6 +38,7 @@ CREATE TABLE [dbo].[Categories](
 GO
 
 
+-- INSERT some example data
 INSERT INTO [dbo].[Categories]
            ([Name]
            ,[Description]
@@ -58,12 +59,20 @@ INSERT INTO [dbo].[Categories]
            ,GETDATE())
 GO
 
-
+-- insert column Category Id to table Posts
 ALTER TABLE [dbo].[Posts]
     ADD CategoryId INTEGER,
     FOREIGN KEY(CategoryId) REFERENCES [dbo].[Categories](Id)
 GO
 
+-- Update some post set CategoryId = 1
+UPDATE [dbo].[Posts] SET CategoryId = 1 WHERE Id IN (
+select id from [dbo].[Posts] where ( Id % 2 ) = 0)
+
+
+-- Update some post set CategoryId = 2
+UPDATE [dbo].[Posts] SET CategoryId = 2 WHERE Id IN (
+select id from[dbo].[Posts]  where ( Id % 2 ) = 1 )
 
 ---------------- FOOTER OF DbScriptMigrationSystem : REMEMBER TO INSERT -----------------------
 SET NOEXEC OFF

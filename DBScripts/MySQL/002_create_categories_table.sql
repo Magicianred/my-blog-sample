@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `Categories` (
 			) ENGINE=InnoDB;
 
 
-
+-- INSERT some example data
 INSERT INTO `Categories` (`Name`, `Description`, `CreateDate`)
 SELECT * FROM (SELECT
     'Category 1'
@@ -34,6 +34,15 @@ WHERE NOT EXISTS (
     SELECT `Name` FROM `Categories` WHERE `Name` = 'Category 2'
 ) LIMIT 1;
 
+-- insert column Category Id to table Posts
 ALTER TABLE `Posts`
   ADD COLUMN `CategoryId` INT,
   ADD FOREIGN KEY `FK_Posts_CategoryId`(`CategoryId`) REFERENCES `Categories`(`Id`);
+
+  
+-- Update some post set CategoryId = 1
+ UPDATE `Posts` SET CategoryId = 1 WHERE Id = 2;
+
+
+-- Update some post set CategoryId = 2
+ UPDATE `Posts` SET CategoryId = 2 WHERE Id IN (1, 3);
