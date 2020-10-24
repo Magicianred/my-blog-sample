@@ -9,13 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Magicianred.LearnByDoing.My
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Magicianred.LearnByDoing.MyBlog.DAL", "Magicianred.LearnByDoing.MyBlog.DAL\Magicianred.LearnByDoing.MyBlog.DAL.csproj", "{49D557AD-1201-4010-AAF7-AD458C38551A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DbScripts", "DbScripts", "{62CE6FDF-98F9-4E06-ACEE-A51220C54447}"
-	ProjectSection(SolutionItems) = preProject
-		DBScripts\000_InitialScript.sql = DBScripts\000_InitialScript.sql
-		DBScripts\000b_CreateUniqueCostraintForMigrationName.sql = DBScripts\000b_CreateUniqueCostraintForMigrationName.sql
-		DBScripts\001_create_posts_table.sql = DBScripts\001_create_posts_table.sql
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{774F3F1E-D9DA-4DB0-A604-A26388DDC599}"
 	ProjectSection(SolutionItems) = preProject
 		Readme.md = Readme.md
