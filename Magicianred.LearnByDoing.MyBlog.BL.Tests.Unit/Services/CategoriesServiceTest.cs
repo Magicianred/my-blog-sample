@@ -20,7 +20,7 @@ namespace Magicianred.LearnByDoing.MyBlog.BL.Tests.Unit.Services
         /// <summary>
         /// A mock of categories repository
         /// </summary>
-        private ICategoriesService _categoriesRepository;
+        private ICategoriesRepository _categoriesRepository;
 
         #region SetUp and TearDown
 
@@ -28,7 +28,7 @@ namespace Magicianred.LearnByDoing.MyBlog.BL.Tests.Unit.Services
         public void SetupUpOneTime()
         {
             // Instance of mock
-            _categoriesRepository = Substitute.For<ICategoriesService>();
+            _categoriesRepository = Substitute.For<ICategoriesRepository>();
             _sut = new CategoriesService(_categoriesRepository);
         }
 
