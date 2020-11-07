@@ -4,18 +4,20 @@ using Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit.Models;
 using Magicianred.LearnByDoing.MyBlog.Domain.Interfaces.Repositories;
 using NSubstitute;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit.Repositories
 {
     [TestFixture]
-    public class PostsRepositoryTest
+    public class TagsRepositoryTest
     {
         /// <summary>
-        /// PostsRepository is our System Under Test
+        /// TagsRepository is our System Under Test
         /// </summary>
-        private PostsRepository _sut;
+        private TagsRepository _sut;
 
         private IDatabaseConnectionFactory _connectionFactory;
 
@@ -27,7 +29,7 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit.Repositories
         {
             // Instance of mock
             _connectionFactory = Substitute.For<IDatabaseConnectionFactory>();
-            _sut = new PostsRepository(_connectionFactory);
+            _sut = new TagsRepository(_connectionFactory);
         }
 
         [OneTimeTearDown]
@@ -41,43 +43,43 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit.Repositories
 
         [Test]
         [Category("Unit test")]
-        public void should_retrieve_all_posts()
+        public void should_retrieve_all_tags()
         {
             // Arrange
-            var mockPosts = PostsHelper.GetDefaultMockData();
+            var mockTags = TagsHelper.GetDefaultMockData();
             var db = new InMemoryDatabase();
-            db.Insert<Post>(mockPosts);
+            db.Insert<Tag>(mockTags);
             _connectionFactory.GetConnection().Returns(db.OpenConnection());
 
             // Act
-            var posts = _sut.GetAll();
-            var postsList = posts.ToList();
+            var tags = _sut.GetAll();
+            var tagsList = tags.ToList();
 
             // Assert
-            Assert.IsNotNull(posts);
-            Assert.AreEqual(posts.Count(), mockPosts.Count);
+            Assert.IsNotNull(tags);
+            Assert.AreEqual(tags.Count(), mockTags.Count);
 
-            mockPosts = mockPosts.OrderBy(o => o.Id).ToList();
-            postsList = postsList.OrderBy(o => o.Id).ToList();
+            mockTags = mockTags.OrderBy(o => o.Id).ToList();
+            tagsList = tagsList.OrderBy(o => o.Id).ToList();
 
-            for (var i = 0; i < mockPosts.Count; i++)
+            for (var i = 0; i < mockTags.Count; i++)
             {
-                var mockPost = mockPosts[0];
-                var post = postsList[0];
-                Assert.IsTrue(mockPost.Id == post.Id);
-                Assert.IsTrue(mockPost.Title == post.Title);
-                Assert.IsTrue(mockPost.Text == post.Text);
+                var mockTag = mockTags[0];
+                var post = tagsList[0];
+                Assert.IsTrue(mockTag.Id == post.Id);
+                Assert.IsTrue(mockTag.Name == post.Name);
+                Assert.IsTrue(mockTag.Description == post.Description);
             }
         }
 
         [TestCase(1)]
         [TestCase(2)]
         [Category("Unit test")]
-        public void should_retrieve_post_by_id(int id)
+        public void should_retrieve_tag_by_id(int id)
         {
             // Arrange
-            var mockTags = TagsHelper.GetDefaultMockData();
             var mockPosts = PostsHelper.GetDefaultMockData();
+            var mockTags = TagsHelper.GetMockDataWithPosts(mockPosts);
             var mockPostTags = PostTagsHelper.GetDefaultMockData();
             var db = new InMemoryDatabase();
             db.Insert<Tag>(mockTags);
@@ -85,28 +87,28 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit.Repositories
             db.Insert<PostTag>(mockPostTags);
             _connectionFactory.GetConnection().Returns(db.OpenConnection());
 
-            var mockPost = mockPosts.Where(x => x.Id == id).FirstOrDefault();
+            var mockTag = mockTags.Where(x => x.Id == id).FirstOrDefault();
 
             // Act
-            var post = _sut.GetById(id);
+            var tag = _sut.GetById(id);
 
             // Assert
-            Assert.IsNotNull(post);
+            Assert.IsNotNull(tag);
 
-            Assert.IsTrue(mockPost.Id == post.Id);
-            Assert.IsTrue(mockPost.Title == post.Title);
-            Assert.IsTrue(mockPost.Text == post.Text);
+            Assert.IsTrue(mockTag.Id == tag.Id);
+            Assert.IsTrue(mockTag.Name == tag.Name);
+            Assert.IsTrue(mockTag.Description == tag.Description);
 
         }
 
         [TestCase(1)]
         [TestCase(2)]
         [Category("Unit test")]
-        public void should_retrieve_post_with_tag_by_id(int id)
+        public void should_retrieve_tag_with_post_by_id(int id)
         {
             // Arrange
-            var mockTags = TagsHelper.GetDefaultMockData();
-            var mockPosts = PostsHelper.GetMockDataWithTags(mockTags);
+            var mockPosts = PostsHelper.GetDefaultMockData();
+            var mockTags = TagsHelper.GetMockDataWithPosts(mockPosts);
             var mockPostTags = PostTagsHelper.GetDefaultMockData();
             var db = new InMemoryDatabase();
             db.Insert<Tag>(mockTags);
@@ -114,43 +116,43 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit.Repositories
             db.Insert<PostTag>(mockPostTags);
             _connectionFactory.GetConnection().Returns(db.OpenConnection());
 
-            var mockPost = mockPosts.Where(x => x.Id == id).FirstOrDefault();
+            var mockTag = mockTags.Where(x => x.Id == id).FirstOrDefault();
 
             // Act
-            var post = _sut.GetById(id);
+            var tag = _sut.GetById(id);
 
             // Assert
-            Assert.IsNotNull(post);
+            Assert.IsNotNull(tag);
 
-            Assert.IsTrue(mockPost.Id == post.Id);
-            Assert.IsTrue(mockPost.Title == post.Title);
-            Assert.IsTrue(mockPost.Text == post.Text);
-            Assert.IsNotNull(post.Tags);
-            Assert.IsTrue(post.Tags.Count() == 1);
-            for (int i = 0; i < post.Tags.Count; i++)
+            Assert.IsTrue(mockTag.Id == tag.Id);
+            Assert.IsTrue(mockTag.Name == tag.Name);
+            Assert.IsTrue(mockTag.Description == tag.Description);
+            Assert.IsNotNull(tag.Posts);
+            Assert.IsTrue(tag.Posts.Count() == 2);
+            for (int i = 0; i < tag.Posts.Count; i++)
             {
-                Assert.IsTrue(mockPost.Tags[i].Id == post.Tags[i].Id);
-                Assert.IsTrue(mockPost.Tags[i].Name == post.Tags[i].Name);
-                Assert.IsTrue(mockPost.Tags[i].Description == post.Tags[i].Description);
+                Assert.IsTrue(mockTag.Posts[i].Id == tag.Posts[i].Id);
+                Assert.IsTrue(mockTag.Posts[i].Title == tag.Posts[i].Title);
+                Assert.IsTrue(mockTag.Posts[i].Text == tag.Posts[i].Text);
             }
 
         }
 
         [Test]
         [Category("Unit test")]
-        public void should_retrieve_no_one_post()
+        public void should_retrieve_no_one_tag()
         {
             // Arrange
-            var mockPosts = PostsHelper.GetDefaultMockData();
+            var mockTags = TagsHelper.GetDefaultMockData();
             var db = new InMemoryDatabase();
-            db.Insert<Post>(mockPosts);
+            db.Insert<Tag>(mockTags);
             _connectionFactory.GetConnection().Returns(db.OpenConnection());
 
             // Act
-            var post = _sut.GetById(1000);
+            var tag = _sut.GetById(1000);
 
             // Assert
-            Assert.IsNull(post);
+            Assert.IsNull(tag);
 
         }
     }
