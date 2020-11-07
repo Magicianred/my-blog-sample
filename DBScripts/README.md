@@ -13,11 +13,15 @@ For the sql server I use the system in this repository [*sqlserver-db-script-mig
 	- 000_InitialScript.sql  
 	- 000b_CreateUniqueCostraintForMigrationName.sql  
 	- 001_create_posts_table.sql  
+	- 002_create_categories_table.sql  
+	- 003_create_tables_tags_and_posttags.sql  
 
 ### MySQL  
 1. Create a new Database in MySQL  
 2. Run scripts in the folder DBScripts\MySQL\:  
 	- 000_InitialScript.sql  
 	- 001_create_posts_table.sql  
+	- 002_create_categories_table.sql  
+	- 003_create_tables_tags_and_posttags.sql  
 
 Enjoy your code!  
