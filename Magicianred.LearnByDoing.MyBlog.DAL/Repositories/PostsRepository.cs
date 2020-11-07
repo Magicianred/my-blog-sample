@@ -1,12 +1,8 @@
-﻿using Magicianred.LearnByDoing.MyBlog.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Dapper;
-using System.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
+﻿using Dapper;
 using Magicianred.LearnByDoing.MyBlog.Domain.Interfaces.Repositories;
-using System.Data;
+using Magicianred.LearnByDoing.MyBlog.Domain.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Magicianred.LearnByDoing.MyBlog.DAL.Repositories
 {
@@ -51,7 +47,14 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Repositories
             using (var connection = _connectionFactory.GetConnection())
             {
                 // TOP 1 is not a command for SQLite, remove
-                post = connection.QueryFirstOrDefault<Post>("SELECT * FROM Posts WHERE Id = @PostId", new { PostId = id });
+                post = connection.QueryFirstOrDefault<Post>("SELECT Id, Title, Text, CategoryId FROM Posts WHERE Id = @PostId", new { PostId = id });
+
+                // if post is not null, retrieve all tags of the post
+                if (post != null)
+                {
+                    post.Tags = connection.Query<Tag>("SELECT * FROM Tags WHERE Id IN (SELECT TagId FROM PostTags WHERE PostId = @PostId)", 
+                            new { PostId = id }).ToList();
+                }
             }
             return post;
         }
