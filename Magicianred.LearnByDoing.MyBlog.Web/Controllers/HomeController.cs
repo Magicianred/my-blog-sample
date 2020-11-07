@@ -20,17 +20,23 @@ namespace Magicianred.LearnByDoing.MyBlog.Web.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IPostsService _postsService;
         private readonly ICategoriesService _categoriesService;
+        private readonly ITagsService _tagsService;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="postsService"></param>
         /// <param name="categoriesService"></param>
+        /// <param name="tagsService"></param>
         /// <param name="logger"></param>
-        public HomeController(IPostsService postsService, ICategoriesService categoriesService, ILogger<HomeController> logger)
+        public HomeController(IPostsService postsService, 
+                                ICategoriesService categoriesService,
+                                ITagsService tagsService,
+                                ILogger<HomeController> logger)
         {
             _postsService = postsService;
             _categoriesService = categoriesService;
+            _tagsService = tagsService;
             _logger = logger;
         }
 
@@ -78,6 +84,29 @@ namespace Magicianred.LearnByDoing.MyBlog.Web.Controllers
         {
             var category = _categoriesService.GetById(id);
             return View(category);
+        }
+
+        /// <summary>
+        /// Retrieve all Tags
+        /// GET: <HomeController>\Tags
+        /// </summary>
+        /// <returns>list of Tags</returns>
+        public IActionResult Tags()
+        {
+            var tags = _tagsService.GetAll();
+            return View(tags);
+        }
+
+        /// <summary>
+        /// Retrieve the tag with the id
+        /// GET <HomeController>/Tag/5
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>the tag with requested id</returns>
+        public IActionResult Tag(int id)
+        {
+            var tag = _tagsService.GetById(id);
+            return View(tag);
         }
 
         /// <summary>

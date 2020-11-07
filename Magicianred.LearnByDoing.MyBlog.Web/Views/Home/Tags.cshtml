@@ -1,0 +1,18 @@
+﻿@model List<Magicianred.LearnByDoing.MyBlog.Domain.Models.Tag>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn more <a href="@Url.Action("About", "Home")">about this project</a>.</p>
+    <div class="tag-list">
+        @foreach (var tag in Model)
+        {
+            <div class="tag-item tag-id-@(tag.Id)">
+                <h2><a href="@Url.Action("Tag", "Home", new { Id = tag.Id })">@tag.Name</a></h2>
+                <p>@tag.Description</p>
+            </div>
+        }
+    </div>
+</div>

@@ -32,12 +32,19 @@ namespace Magicianred.LearnByDoing.MyBlog.Web
             services.AddControllersWithViews();
 
             services.AddScoped<IDatabaseConnectionFactory, DatabaseConnectionFactory>();
+
             services.AddScoped<IPost, Post>();
             services.AddScoped<IPostsRepository, PostsRepository>();
             services.AddScoped<IPostsService, PostsService>();
+
             services.AddScoped<ICategory, Category>();
             services.AddScoped<ICategoriesRepository, CategoriesRepository>();
             services.AddScoped<ICategoriesService, CategoriesService>();
+
+            services.AddScoped<ITag, Tag>();
+            services.AddScoped<IPostTag, PostTag>();
+            services.AddScoped<ITagsRepository, TagsRepository>();
+            services.AddScoped<ITagsService, TagsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
