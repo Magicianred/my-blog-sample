@@ -15,6 +15,7 @@ For the sql server I use the system in this repository [*sqlserver-db-script-mig
 	- 001_create_posts_table.sql  
 	- 002_create_categories_table.sql  
 	- 003_create_tables_tags_and_posttags.sql  
+	- 004_add_col_author_to_posts_table.sql  
 
 ### MySQL  
 1. Create a new Database in MySQL  
@@ -23,5 +24,6 @@ For the sql server I use the system in this repository [*sqlserver-db-script-mig
 	- 001_create_posts_table.sql  
 	- 002_create_categories_table.sql  
 	- 003_create_tables_tags_and_posttags.sql  
+	- 004_add_col_author_to_posts_table.sql  
 
 Enjoy your code!  
