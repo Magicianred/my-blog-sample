@@ -67,6 +67,39 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit.Repositories
                 Assert.IsTrue(mockPost.Id == post.Id);
                 Assert.IsTrue(mockPost.Title == post.Title);
                 Assert.IsTrue(mockPost.Text == post.Text);
+                Assert.IsTrue(mockPost.Author == post.Author);
+            }
+        }
+
+        [TestCase("Tom")]
+        [TestCase("Jim")]
+        [Category("Unit test")]
+        public void should_retrieve_all_posts_by_author(string author)
+        {
+            // Arrange
+            var mockPosts = PostsHelper.GetDefaultMockData();
+            var mockPostsFiltered = mockPosts.Where(w => w.Author == author).ToList();
+
+            var db = new InMemoryDatabase();
+            db.Insert<Post>(mockPosts);
+            _connectionFactory.GetConnection().Returns(db.OpenConnection());
+
+            // Act
+            var posts = _sut.GetAllByAuthor(author);
+            var postsList = posts.ToList();
+
+            // Assert
+            Assert.IsNotNull(posts);
+            Assert.AreEqual(posts.Count(), mockPostsFiltered.Count);
+
+            mockPostsFiltered = mockPosts.OrderBy(o => o.Id).ToList();
+            postsList = postsList.OrderBy(o => o.Id).ToList();
+
+            for (var i = 0; i < mockPostsFiltered.Count; i++)
+            {
+                var mockPost = mockPostsFiltered[0];
+                var post = postsList[0];
+                Assert.IsTrue(author == post.Author);
             }
         }
 
@@ -96,7 +129,7 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit.Repositories
             Assert.IsTrue(mockPost.Id == post.Id);
             Assert.IsTrue(mockPost.Title == post.Title);
             Assert.IsTrue(mockPost.Text == post.Text);
-
+            Assert.IsTrue(mockPost.Author == post.Author);
         }
 
         [TestCase(1)]
