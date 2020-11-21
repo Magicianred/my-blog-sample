@@ -61,6 +61,31 @@ namespace Magicianred.LearnByDoing.MyBlog.BL.Tests.Unit.Services
             }
         }
 
+        [TestCase("Tom")]
+        [TestCase("Jim")]
+        [Category("Unit test")]
+        public void should_retrieve_all_posts_by_author(string author)
+        {
+            // Arrange
+            var mockPosts = PostsHelper.GetDefaultMockData();
+            var mockPostsFiltered = mockPosts.Where(w => w.Author == author).ToList();
+            _postsRepository.GetAllByAuthor(author).Returns(mockPostsFiltered);
+
+            // Act
+            var posts = _sut.GetAllByAuthor(author);
+            var postsList = posts.ToList();
+
+            // Assert
+            Assert.IsNotNull(posts);
+            Assert.AreEqual(posts.Count(), mockPostsFiltered.Count);
+
+            foreach (var post in posts)
+            {
+                Assert.IsTrue(mockPostsFiltered.Contains(post));
+                mockPostsFiltered.Remove(post);
+            }
+        }
+
         [TestCase(1)]
         [TestCase(2)]
         [Category("Unit test")]
