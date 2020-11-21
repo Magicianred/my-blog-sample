@@ -11,6 +11,7 @@
         {
             <div class="post-item post-id-@(post.Id)">
                 <h2><a href="@Url.Action("Post", "Home", new { Id = post.Id })">@post.Title</a></h2>
+                <h3>Author: <a href="@Url.Action("Index", "Home", new { author = post.Author })">@post.Author</a></h3>
                 <p>@post.Text</p>
             </div>
         }

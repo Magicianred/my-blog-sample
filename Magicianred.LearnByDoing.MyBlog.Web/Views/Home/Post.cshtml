@@ -10,6 +10,7 @@
     {
         <article class="post-details post-id-@(Model.Id)">
             <h2>@Model.Title</h2>
+            <h3>Author: <a href="@Url.Action("Index", "Home", new { author = Model.Author })">@Model.Author</a></h3>
             <p>@Model.Text</p>
         </article>
     }
