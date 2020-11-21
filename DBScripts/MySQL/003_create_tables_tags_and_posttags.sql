@@ -3,7 +3,7 @@
 INSERT INTO `DbScriptMigration` (`MigrationId`, `MigrationName`, `MigrationDate`)
 SELECT * FROM (SELECT UUID(),'003_create_tables_tags_and_posttags',NOW()) AS tmp
 WHERE NOT EXISTS (
-    SELECT `MigrationName` FROM `DbScriptMigration` WHERE `MigrationName` = '002_create_categories_table'
+    SELECT `MigrationName` FROM `DbScriptMigration` WHERE `MigrationName` = '003_create_tables_tags_and_posttags'
 ) LIMIT 1;
 
 CREATE TABLE IF NOT EXISTS `Tags` (
