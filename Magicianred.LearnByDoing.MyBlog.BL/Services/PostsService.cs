@@ -35,6 +35,15 @@ namespace Magicianred.LearnByDoing.MyBlog.BL.Services
         }
 
         /// <summary>
+        /// Retrieve all posts for a specific author
+        /// </summary>
+        /// <returns>list of author posts</returns>
+        public List<Post> GetAllByAuthor(string author)
+        {
+            return _postsRepository.GetAllByAuthor(author).ToList();
+        }
+
+        /// <summary>
         /// Retrieve the post by own id
         /// </summary>
         /// <param name="id">id of post to retrieve</param>
