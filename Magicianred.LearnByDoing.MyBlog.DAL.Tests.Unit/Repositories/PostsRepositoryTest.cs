@@ -2,6 +2,7 @@
 using Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit.Helpers;
 using Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit.Models;
 using Magicianred.LearnByDoing.MyBlog.Domain.Interfaces.Repositories;
+using Microsoft.Extensions.Configuration;
 using NSubstitute;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit.Repositories
         /// </summary>
         private PostsRepository _sut;
 
+        private IConfiguration _configuration;
         private IDatabaseConnectionFactory _connectionFactory;
 
 
@@ -26,8 +28,9 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit.Repositories
         public void SetupUpOneTime()
         {
             // Instance of mock
+            _configuration = Substitute.For<IConfiguration>();
             _connectionFactory = Substitute.For<IDatabaseConnectionFactory>();
-            _sut = new PostsRepository(_connectionFactory);
+            _sut = new PostsRepository(_connectionFactory, _configuration);
         }
 
         [OneTimeTearDown]
@@ -69,6 +72,29 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit.Repositories
                 Assert.IsTrue(mockPost.Text == post.Text);
                 Assert.IsTrue(mockPost.Author == post.Author);
             }
+        }
+
+        [TestCase(1, 3)]
+        [TestCase(2, 3)]
+        [TestCase(3, 3)]
+        [Category("Unit test")]
+        public void should_retrieve_all_paginated_posts(int page, int pageSize)
+        {
+            // Arrange
+            var mockPosts = PostsHelper.GetMockDataForPaging();
+            var db = new InMemoryDatabase();
+            db.Insert<Post>(mockPosts);
+            _connectionFactory.GetConnection().Returns(db.OpenConnection());
+            //// sqllite pagination syntax is like mysql
+            //_configuration.GetSection("DatabaseType").Value.Returns("mysql");
+
+            // Act
+            var posts = _sut.GetPaginatedAll(page, pageSize);
+            var postsList = posts.ToList();
+
+            // Assert
+            Assert.IsNotNull(posts);
+            Assert.IsTrue(posts.Count() <= pageSize, "Posts are more than pageSize! Error");
         }
 
         [TestCase("Tom")]

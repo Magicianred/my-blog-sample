@@ -36,5 +36,26 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit.Helpers
             mockPosts[1].Tags.Add(mockTags[1]);
             return mockPosts;
         }
+        public static List<Post> GetMockDataForPaging()
+        {
+            List<Post> mockPosts = new List<Post>();
+            mockPosts.AddRange(PostsHelper.GetDefaultMockData());
+
+            mockPosts.Add(new Post()
+            {
+                Id = 3,
+                Title = "This is a title for post 3",
+                Text = "This is a text for post 3",
+                Author = "Tom"
+            });
+            mockPosts.Add(new Post()
+            {
+                Id = 4,
+                Title = "This is a title for post 4",
+                Text = "This is a text for post 4",
+                Author = "Jim"
+            });
+            return mockPosts;
+        }
     }
 }
