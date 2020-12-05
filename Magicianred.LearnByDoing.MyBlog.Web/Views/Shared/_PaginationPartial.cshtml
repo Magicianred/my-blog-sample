@@ -1,0 +1,22 @@
+﻿@model string
+@{ 
+    var actionPath = (string)ViewBag.ActionPath;
+    if(String.IsNullOrEmpty(actionPath))
+    {
+        actionPath = "Index";
+    }
+}
+<div class="post-navigation">
+    @if (ViewBag.IsFirst)
+    {
+        <a href="@Url.Action(actionPath, Model, new { page = (ViewBag.CurrentPage - 1), pageSize = ViewBag.PageSize })">Prev</a>
+    }
+    @if (ViewBag.IsFirst && ViewBag.IsLast)
+    {
+        <span> | </span>
+    }
+    @if (ViewBag.IsLast)
+    {
+        <a href="@Url.Action(actionPath, Model, new { page = (ViewBag.CurrentPage + 1), pageSize = ViewBag.PageSize })">Next</a>
+    }
+</div>

@@ -44,8 +44,11 @@ namespace Magicianred.LearnByDoing.MyBlog.Web.Controllers
         /// Retrieve all Posts
         /// GET: <HomeController>
         /// </summary>
+        /// <param name="page">current page</param>
+        /// <param name="pageSize">items for page</param>
+        /// <param name="author">filter by author</param>
         /// <returns>list of Posts</returns>
-        public IActionResult Index(string author = null)
+        public IActionResult Index(int page = 1, int pageSize = 3, string author = null)
         {
             List<Post> posts = new List<Post>();
             if (!String.IsNullOrWhiteSpace(author))
@@ -53,8 +56,14 @@ namespace Magicianred.LearnByDoing.MyBlog.Web.Controllers
                 posts = _postsService.GetAllByAuthor(author);
             } else
             {
-                posts = _postsService.GetAll();
+                posts = _postsService.GetPaginatedAll(page, pageSize);
             }
+
+            ViewBag.CurrentPage = page;
+            ViewBag.PageSize = pageSize;
+            ViewBag.IsFirst = ((int)ViewBag.CurrentPage > 1);
+            ViewBag.IsLast = (posts.Count >= (int)ViewBag.PageSize);
+
             return View(posts);
         }
 
