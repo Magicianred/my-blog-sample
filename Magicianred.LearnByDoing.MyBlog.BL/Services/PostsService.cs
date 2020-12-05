@@ -35,6 +35,18 @@ namespace Magicianred.LearnByDoing.MyBlog.BL.Services
         }
 
         /// <summary>
+        /// Retrieve all posts paginated
+        /// </summary>
+        /// <param name="page">current page</param>
+        /// <param name="pageSize">items for page</param>
+        /// <returns>list of paginated posts</returns>
+        public List<Post> GetPaginatedAll(int page, int pageSize)
+        {
+            return _postsRepository.GetPaginatedAll(page, pageSize).ToList();
+        }
+
+
+        /// <summary>
         /// Retrieve all posts for a specific author
         /// </summary>
         /// <returns>list of author posts</returns>
