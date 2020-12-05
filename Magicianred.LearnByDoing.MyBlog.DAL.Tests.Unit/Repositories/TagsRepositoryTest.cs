@@ -2,6 +2,7 @@
 using Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit.Helpers;
 using Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit.Models;
 using Magicianred.LearnByDoing.MyBlog.Domain.Interfaces.Repositories;
+using Microsoft.Extensions.Configuration;
 using NSubstitute;
 using NUnit.Framework;
 using System;
@@ -18,7 +19,7 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit.Repositories
         /// TagsRepository is our System Under Test
         /// </summary>
         private TagsRepository _sut;
-
+        private IConfiguration _configuration;
         private IDatabaseConnectionFactory _connectionFactory;
 
 
@@ -28,8 +29,9 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit.Repositories
         public void SetupUpOneTime()
         {
             // Instance of mock
+            _configuration = Substitute.For<IConfiguration>();
             _connectionFactory = Substitute.For<IDatabaseConnectionFactory>();
-            _sut = new TagsRepository(_connectionFactory);
+            _sut = new TagsRepository(_connectionFactory, _configuration);
         }
 
         [OneTimeTearDown]

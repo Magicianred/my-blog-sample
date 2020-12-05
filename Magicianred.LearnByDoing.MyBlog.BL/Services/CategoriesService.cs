@@ -33,15 +33,19 @@ namespace Magicianred.LearnByDoing.MyBlog.BL.Services
         {
             return _categoriesRepository.GetAll().ToList();
         }
+        public List<Category> GetPaginatedAll(int page, int pageSize)
+        {
+            return _categoriesRepository.GetPaginatedAll(page, pageSize).ToList();
+        }
 
         /// <summary>
         /// Retrieve the category by own id
         /// </summary>
         /// <param name="id">id of category to retrieve</param>
         /// <returns>the category, null if id not found</returns>
-        public Category GetById(int id)
+        public Category GetById(int id, int page = 1, int pageSize = 3)
         {
-            return _categoriesRepository.GetById(id);
+            return _categoriesRepository.GetById(id, page, pageSize);
         }
 
     }

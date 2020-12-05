@@ -84,9 +84,15 @@ namespace Magicianred.LearnByDoing.MyBlog.Web.Controllers
         /// GET: <HomeController>\Categories
         /// </summary>
         /// <returns>list of Categories</returns>
-        public IActionResult Categories()
+        public IActionResult Categories(int page = 1, int pageSize = 3)
         {
-            var categories = _categoriesService.GetAll();
+            var categories = _categoriesService.GetPaginatedAll(page, pageSize);
+
+            ViewBag.CurrentPage = page;
+            ViewBag.PageSize = pageSize;
+            ViewBag.IsFirst = ((int)ViewBag.CurrentPage > 1);
+            ViewBag.IsLast = (categories.Count >= (int)ViewBag.PageSize);
+
             return View(categories);
         }
 
@@ -96,9 +102,15 @@ namespace Magicianred.LearnByDoing.MyBlog.Web.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>the category with requested id</returns>
-        public IActionResult Category(int id)
+        public IActionResult Category(int id, int page = 1, int pageSize = 3)
         {
-            var category = _categoriesService.GetById(id);
+            var category = _categoriesService.GetById(id, page, pageSize);
+
+            ViewBag.CurrentPage = page;
+            ViewBag.PageSize = pageSize;
+            ViewBag.IsFirst = ((int)ViewBag.CurrentPage > 1);
+            ViewBag.IsLast = (category.Posts.Count >= (int)ViewBag.PageSize);
+
             return View(category);
         }
 
@@ -107,9 +119,15 @@ namespace Magicianred.LearnByDoing.MyBlog.Web.Controllers
         /// GET: <HomeController>\Tags
         /// </summary>
         /// <returns>list of Tags</returns>
-        public IActionResult Tags()
+        public IActionResult Tags(int page = 1, int pageSize = 3)
         {
-            var tags = _tagsService.GetAll();
+            var tags = _tagsService.GetPaginatedAll(page, pageSize);
+
+            ViewBag.CurrentPage = page;
+            ViewBag.PageSize = pageSize;
+            ViewBag.IsFirst = ((int)ViewBag.CurrentPage > 1);
+            ViewBag.IsLast = (tags.Count >= (int)ViewBag.PageSize);
+
             return View(tags);
         }
 
@@ -119,9 +137,15 @@ namespace Magicianred.LearnByDoing.MyBlog.Web.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>the tag with requested id</returns>
-        public IActionResult Tag(int id)
+        public IActionResult Tag(int id, int page = 1, int pageSize = 3)
         {
-            var tag = _tagsService.GetById(id);
+            var tag = _tagsService.GetById(id, page, pageSize);
+
+            ViewBag.CurrentPage = page;
+            ViewBag.PageSize = pageSize;
+            ViewBag.IsFirst = ((int)ViewBag.CurrentPage > 1);
+            ViewBag.IsLast = (tag.Posts.Count >= (int)ViewBag.PageSize);
+
             return View(tag);
         }
 

@@ -6,6 +6,7 @@ namespace Magicianred.LearnByDoing.MyBlog.Domain.Interfaces.Repositories
     public interface ITagsRepository
     {
         public IEnumerable<Tag> GetAll();
-        Tag GetById(int id);
+        public IEnumerable<Tag> GetPaginatedAll(int page, int pageSize);
+        Tag GetById(int id, int page = 1, int pageSize = 3);
     }
 }

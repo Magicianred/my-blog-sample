@@ -8,6 +8,7 @@ namespace Magicianred.LearnByDoing.MyBlog.Domain.Interfaces.Repositories
     public interface ICategoriesRepository
     {
         public IEnumerable<Category> GetAll();
-        Category GetById(int id);
+        public IEnumerable<Category> GetPaginatedAll(int page, int pageSize);
+        Category GetById(int id, int page = 1, int pageSize = 3);
     }
 }

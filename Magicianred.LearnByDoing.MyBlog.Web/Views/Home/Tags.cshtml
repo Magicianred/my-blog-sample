@@ -15,4 +15,5 @@
             </div>
         }
     </div>
+    @await Html.PartialAsync("_PaginationPartial", "Home", new ViewDataDictionary(ViewData) { { "ActionPath", "Tags" } })
 </div>

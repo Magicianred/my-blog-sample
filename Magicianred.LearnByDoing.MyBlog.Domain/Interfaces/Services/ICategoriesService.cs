@@ -8,6 +8,7 @@ namespace Magicianred.LearnByDoing.MyBlog.Domain.Interfaces.Services
     public interface ICategoriesService
     {
         public List<Category> GetAll();
-        public Category GetById(int id);
+        public List<Category> GetPaginatedAll(int page = 1, int pageSize = 3);
+        public Category GetById(int id, int page = 1, int pageSize = 3);
     }
 }
