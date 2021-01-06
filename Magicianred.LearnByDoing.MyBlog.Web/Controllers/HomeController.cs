@@ -109,8 +109,14 @@ namespace Magicianred.LearnByDoing.MyBlog.Web.Controllers
             ViewBag.CurrentPage = page;
             ViewBag.PageSize = pageSize;
             ViewBag.IsFirst = ((int)ViewBag.CurrentPage > 1);
-            ViewBag.IsLast = (category.Posts.Count >= (int)ViewBag.PageSize);
-
+            if (category != null)
+            {
+                ViewBag.IsLast = (category.Posts.Count >= (int)ViewBag.PageSize);
+            } else
+            {
+                ViewBag.IsLast = true;
+            }
+                
             return View(category);
         }
 
