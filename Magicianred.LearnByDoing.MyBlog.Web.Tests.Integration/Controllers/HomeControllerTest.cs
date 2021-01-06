@@ -54,7 +54,7 @@ namespace Magicianred.LearnByDoing.MyBlog.Web.Tests.Integration.Controllers
             // Assert
             Assert.That(response.IsSuccessStatusCode);
             Assert.That(!string.IsNullOrWhiteSpace(responseString));
-            Assert.That(responseString.Contains("<li class=\"post-item post-id"));
+            Assert.That(responseString.Contains("<div class=\"post-item post-id"));
         }
 
         [TestCase(1)]
