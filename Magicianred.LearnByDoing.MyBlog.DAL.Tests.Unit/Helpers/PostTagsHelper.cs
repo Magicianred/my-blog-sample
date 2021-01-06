@@ -20,5 +20,31 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit.Helpers
             });
             return mockPostTags;
         }
+
+        public static List<PostTag> GetMockData2PostForAllTags()
+        {
+            List<PostTag> mockPostTags = new List<PostTag>();
+            mockPostTags.Add(new PostTag()
+            {
+                PostId = 1,
+                TagId = 1
+            });
+            mockPostTags.Add(new PostTag()
+            {
+                PostId = 2,
+                TagId = 1
+            });
+            mockPostTags.Add(new PostTag()
+            {
+                PostId = 2,
+                TagId = 2
+            });
+            mockPostTags.Add(new PostTag()
+            {
+                PostId = 1,
+                TagId = 2
+            });
+            return mockPostTags;
+        }
     }
 }

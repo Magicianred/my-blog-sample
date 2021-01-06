@@ -51,17 +51,17 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Repositories
             using (var connection = _connectionFactory.GetConnection())
             {
                 var databaseType = _configuration.GetSection("DatabaseType").Value;
-                if (!string.IsNullOrWhiteSpace(databaseType) && databaseType.ToLower().Trim() == "mysql")
-                {
-                    posts = connection.Query<Post>(
-                        "SELECT Id, Title, Text, Author FROM Posts ORDER BY CreateDate DESC LIMIT @offset, @pageSize ",
-                        new { offset = ((page - 1) * pageSize), pageSize = pageSize });
-                }
-                else // if (!string.IsNullOrWhiteSpace(databaseType) && databaseType.ToLower().Trim() == "mssql")
+                if (!string.IsNullOrWhiteSpace(databaseType) && databaseType.ToLower().Trim() == "mssql")
                 {
                     posts = connection.Query<Post>(
                             "SELECT Id, Title, Text, Author FROM Posts ORDER BY CreateDate DESC OFFSET @offset ROWS FETCH NEXT @PageSize ROWS ONLY",
                             new { offset = ((page - 1) * pageSize), pageSize = pageSize });
+                }
+                else // if (!string.IsNullOrWhiteSpace(databaseType) && databaseType.ToLower().Trim() == "mysql")
+                {
+                    posts = connection.Query<Post>(
+                        "SELECT Id, Title, Text, Author FROM Posts ORDER BY CreateDate DESC LIMIT @offset, @pageSize ",
+                        new { offset = ((page - 1) * pageSize), pageSize = pageSize });
                 }
             }
             return posts;

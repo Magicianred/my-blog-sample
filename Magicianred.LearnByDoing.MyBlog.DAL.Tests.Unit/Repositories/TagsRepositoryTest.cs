@@ -111,7 +111,7 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit.Repositories
             // Arrange
             var mockPosts = PostsHelper.GetDefaultMockData();
             var mockTags = TagsHelper.GetMockDataWithPosts(mockPosts);
-            var mockPostTags = PostTagsHelper.GetDefaultMockData();
+            var mockPostTags = PostTagsHelper.GetMockData2PostForAllTags();
             var db = new InMemoryDatabase();
             db.Insert<Tag>(mockTags);
             db.Insert<Post>(mockPosts);

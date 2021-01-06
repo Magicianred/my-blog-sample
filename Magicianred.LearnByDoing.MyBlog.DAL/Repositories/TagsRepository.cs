@@ -76,14 +76,14 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Repositories
                 if (tag != null)
                 {
                     var databaseType = _configuration.GetSection("DatabaseType").Value;
-                    if (!string.IsNullOrWhiteSpace(databaseType) && databaseType.ToLower().Trim() == "mysql")
-                    {
-                        tag.Posts = connection.Query<Post>("SELECT * FROM Posts WHERE Id IN (SELECT PostId FROM PostTags WHERE TagId = @TagId ORDER BY CreateDate  DESC LIMIT @offset, @pageSize)",
-                                new { TagId = id, offset = ((page - 1) * pageSize), pageSize = pageSize }).ToList();
-                    }
-                    else // if (!string.IsNullOrWhiteSpace(databaseType) && databaseType.ToLower().Trim() == "mssql")
+                    if (!string.IsNullOrWhiteSpace(databaseType) && databaseType.ToLower().Trim() == "mssql")
                     {
                         tag.Posts = connection.Query<Post>("SELECT * FROM Posts WHERE Id IN (SELECT PostId FROM PostTags WHERE TagId = @TagId ORDER BY CreateDate DESC OFFSET @offset ROWS FETCH NEXT @PageSize ROWS ONLY)",
+                                new { TagId = id, offset = ((page - 1) * pageSize), pageSize = pageSize }).ToList();
+                    }
+                    else // if (!string.IsNullOrWhiteSpace(databaseType) && databaseType.ToLower().Trim() == "mysql")
+                    {
+                        tag.Posts = connection.Query<Post>("SELECT * FROM Posts WHERE Id IN (SELECT PostId FROM PostTags WHERE TagId = @TagId ORDER BY CreateDate  DESC LIMIT @offset, @pageSize)",
                                 new { TagId = id, offset = ((page - 1) * pageSize), pageSize = pageSize }).ToList();
                     }
                 }

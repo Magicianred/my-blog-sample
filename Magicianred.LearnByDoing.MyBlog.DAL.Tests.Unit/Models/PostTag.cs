@@ -13,5 +13,6 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Tests.Unit.Models
     [Alias("PostTags")]
     public class PostTag : Magicianred.LearnByDoing.MyBlog.Domain.Models.PostTag
     {
+        public DateTime CreateDate { get; set; } = DateTime.Now;
     }
 }

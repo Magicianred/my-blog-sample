@@ -76,15 +76,15 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Repositories
                 if(category != null)
                 {
                     var databaseType = _configuration.GetSection("DatabaseType").Value;
-                    if (!string.IsNullOrWhiteSpace(databaseType) && databaseType.ToLower().Trim() == "mysql")
-                    {
-                        category.Posts = connection.Query<Post>("SELECT * FROM Posts WHERE CategoryId = @CategoryId ORDER BY CreateDate DESC LIMIT @offset, @pageSize ",
-                            new { CategoryId = id, offset = ((page - 1) * pageSize), pageSize = pageSize }).ToList();
-                    }
-                    else // if (!string.IsNullOrWhiteSpace(databaseType) && databaseType.ToLower().Trim() == "mssql")
+                    if (!string.IsNullOrWhiteSpace(databaseType) && databaseType.ToLower().Trim() == "mssql")
                     {
                         category.Posts = connection.Query<Post>("SELECT * FROM Posts WHERE CategoryId = @CategoryId ORDER BY CreateDate DESC OFFSET @offset ROWS FETCH NEXT @PageSize ROWS ONLY",
                                 new { CategoryId = id, offset = ((page - 1) * pageSize), pageSize = pageSize }).ToList();
+                    }
+                    else // if (!string.IsNullOrWhiteSpace(databaseType) && databaseType.ToLower().Trim() == "mysql")
+                    {
+                        category.Posts = connection.Query<Post>("SELECT * FROM Posts WHERE CategoryId = @CategoryId ORDER BY CreateDate DESC LIMIT @offset, @pageSize ",
+                            new { CategoryId = id, offset = ((page - 1) * pageSize), pageSize = pageSize }).ToList();
                     }
 
                 }
