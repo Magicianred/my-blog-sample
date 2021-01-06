@@ -83,6 +83,7 @@ namespace Magicianred.LearnByDoing.MyBlog.DAL.Repositories
                     }
                     else // if (!string.IsNullOrWhiteSpace(databaseType) && databaseType.ToLower().Trim() == "mysql")
                     {
+                        // problem with retrieve all posts is already fixed in a previous commit 09f7fa9c when I substitute 'SELECT Id FROM' with 'SELECT PostId FROM'. check if in your repo there was the fix
                         tag.Posts = connection.Query<Post>("SELECT * FROM Posts WHERE Id IN (SELECT PostId FROM PostTags WHERE TagId = @TagId ORDER BY CreateDate  DESC LIMIT @offset, @pageSize)",
                                 new { TagId = id, offset = ((page - 1) * pageSize), pageSize = pageSize }).ToList();
                     }
