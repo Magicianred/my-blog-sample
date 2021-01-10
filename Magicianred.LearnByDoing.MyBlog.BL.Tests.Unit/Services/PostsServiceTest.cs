@@ -65,7 +65,7 @@ namespace Magicianred.LearnByDoing.MyBlog.BL.Tests.Unit.Services
         [TestCase(2, 3)]
         [TestCase(3, 3)]
         [Category("Unit test")]
-        public void should_retrieve_all_posts(int page, int pageSize)
+        public void should_retrieve_all_paginated_posts(int page, int pageSize)
         {
             // Arrange
             var mockPosts = PostsHelper.GetMockDataForPaging();
