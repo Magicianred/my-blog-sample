@@ -38,7 +38,7 @@ namespace Magicianred.LearnByDoing.MyBlog.BL.Services
         /// Retrieve all posts for a specific author
         /// </summary>
         /// <returns>list of author posts</returns>
-        public List<Post> GetAllByAuthor(string author)
+        public IEnumerable<Post> GetAllByAuthor(string author)
         {
             return _postsRepository.GetAllByAuthor(author).ToList();
         }
